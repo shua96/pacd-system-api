@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->integer('age');
             $table->string('sex');
-            $table->integer('qualification');
+            $table->string('qualification');
             $table->string('course_year');
             $table->string('address');
             $table->string('actionprovided');

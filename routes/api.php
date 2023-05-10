@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AssessmentClients;
 use App\Models\Clients;
 use App\Models\Faqlists;
 use Illuminate\Http\Request;
@@ -70,6 +71,8 @@ Route::get('/getfaq', function () {
 });
 
 
+//API Routes for Login/Logout Page
+
 Route::post('/login', function (Request $request) {
     $credentials = $request->validate([
         'email' => ['required'],
@@ -87,8 +90,46 @@ Route::post('/login', function (Request $request) {
     ])->onlyInput('email');
 });
 
-
-
 Route::post('/logout', function () {
     return Auth::logout();
+});
+
+//API Routes for Assessment Clients Page
+
+Route::post('/createassessmentclient', function (Request $request) {
+    return AssessmentClients::create([
+        'firstname' => $request->firstname,
+        'middlename' => $request->middlename,
+        'lastname' => $request->lastname,
+        'age' => $request->age,
+        'sex' => $request->sex,
+        'qualification' => $request->qualification,
+        'course_year' => $request->course_year,
+        'address' => $request->address,
+        'actionprovided' => $request->actionprovided,
+    ]);
+});
+
+Route::get('/get-assessmentclients', function () {
+    return AssessmentClients::all();
+});
+
+Route::post('/update-assessmentclient', function (Request $request) {
+    $client = AssessmentClients::find($request->id);
+
+    $client->firstname = $request->firstname;
+    $client->middlename = $request->middlename;
+    $client->lastname = $request->lastname;
+    $client->age = $request->age;
+    $client->sex = $request->sex;
+    $client->qualification = $request->qualification;
+    $client->course_year = $request->course_year;
+    $client->address = $request->address;
+    $client->actionprovided = $request->actionprovided;
+
+    return $client->save();
+});
+
+Route::post('/delete-assessmentclient', function (Request $request) {
+    return AssessmentClients::find($request->id)->delete();
 });
