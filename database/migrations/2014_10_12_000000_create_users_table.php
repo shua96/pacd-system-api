@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('access');
+            $table->string('firstname');
+            $table->string('middlename')->nullable();
+            $table->string('lastname');
+            $table->string('contact');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -24,7 +28,11 @@ return new class extends Migration
         });
 
         User::create([
-            'name' => 'admin',
+            'access' => 'superadmin',
+            'firstname' => 'admin',
+            'middlename' => 'admin',
+            'lastname' => 'admin',
+            'contact' => 'admin',
             'email' => 'admin',
             'password' => Hash::make('admin'),
         ]);
