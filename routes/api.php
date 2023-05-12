@@ -9,8 +9,10 @@ use App\Models\Faqlists;
 use App\Models\ProcurementFaqs;
 use App\Models\RegistrarFaqs;
 use App\Models\TrainingFaqs;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -294,4 +296,22 @@ Route::post('/updateadminfaqs', function (Request $request) {
 
 Route::post('/deleteadminfaqs', function (Request $request) {
     return AdminFaqs::find($request->id)->delete();
+});
+
+//API FOR CREATING ADMINISTRATIVE ACCOUNTS
+
+Route::post('/createaccount', function (Request $request) {
+    return User::create([
+        'access' => $request->access,
+        'firstname' => $request->firstname,
+        'middlename' => $request->middlename,
+        'lastname' => $request->lastname,
+        'contact' => $request->contact,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+    ]);
+});
+
+Route::get('/getaccounts', function () {
+    return User::all();
 });
