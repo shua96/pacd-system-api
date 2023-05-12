@@ -1,8 +1,14 @@
 <?php
 
+use App\Models\AccountingFaqs;
+use App\Models\AdminFaqs;
 use App\Models\AssessmentClients;
+use App\Models\CertififactionFaqs;
 use App\Models\Clients;
 use App\Models\Faqlists;
+use App\Models\ProcurementFaqs;
+use App\Models\RegistrarFaqs;
+use App\Models\TrainingFaqs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
