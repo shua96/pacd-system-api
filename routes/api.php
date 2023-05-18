@@ -313,3 +313,19 @@ Route::post('/createaccount', function (Request $request) {
 Route::get('/getaccounts', function () {
     return User::all();
 });
+
+
+Route::post('/updateaccount', function (Request $request) {
+    $user = User::find($request->id);
+
+    $user->firstname = $request->firstname;
+    $user->middlename = $request->middlename;
+    $user->lastname = $request->lastname;
+    $user->contact = $request->contact;
+    return $user->save();
+});
+
+
+Route::post('/deleteaccount', function (Request $request) {
+    return User::find($request->id)->delete();
+});
