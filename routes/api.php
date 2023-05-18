@@ -104,13 +104,12 @@ Route::post('/logout', function () {
 
 Route::post('/createassessmentclient', function (Request $request) {
     return AssessmentClients::create([
-        'firstname' => $request->firstname,
-        'middlename' => $request->middlename,
-        'lastname' => $request->lastname,
+        'name' => $request->name,
         'age' => $request->age,
         'sex' => $request->sex,
-        'qualification' => $request->qualification,
         'course_year' => $request->course_year,
+        'qualification' => $request->qualification,
+        'school' => $request->school,
         'address' => $request->address,
         'actionprovided' => $request->actionprovided,
     ]);

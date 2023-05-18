@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('assessment_clients', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('middlename');
-            $table->string('lastname');
+            $table->string('name');
             $table->integer('age');
             $table->string('sex');
-            $table->string('qualification');
             $table->string('course_year');
+            $table->string('qualification');
+            $table->string('school');
             $table->string('address');
             $table->string('actionprovided');
             $table->timestamps();

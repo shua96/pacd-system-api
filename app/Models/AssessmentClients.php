@@ -10,13 +10,12 @@ class AssessmentClients extends Model
     use HasFactory;
 
     protected $fillable = [
-        'firstname',
-        'middlename',
-        'lastname',
+        'name',
         'age',
         'sex',
-        'qualification',
         'course_year',
+        'qualification',
+        'school',
         'address',
         'actionprovided',
     ];
