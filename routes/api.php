@@ -22,14 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //API Routes for Client Page
 Route::post('/createclient', function (Request $request) {
     return Clients::create([
-        'firstname' => $request->firstname,
-        'middlename' => $request->middlename,
-        'lastname' => $request->lastname,
+        'name' => $request->name,
         'age' => $request->age,
         'sex' => $request->sex,
+        'address' => $request->address,
         'contact' => $request->contact,
         'email' => $request->email,
-        'address' => $request->address,
         'actionprovided' => $request->actionprovided,
     ]);
 });
