@@ -6,6 +6,7 @@ use App\Models\AssessmentClients;
 use App\Models\CertififactionFaqs;
 use App\Models\Clients;
 use App\Models\Faqlists;
+use App\Models\Feedbacks;
 use App\Models\ProcurementFaqs;
 use App\Models\RegistrarFaqs;
 use App\Models\TrainingFaqs;
@@ -327,4 +328,13 @@ Route::post('/updateaccount', function (Request $request) {
 
 Route::post('/deleteaccount', function (Request $request) {
     return User::find($request->id)->delete();
+});
+
+
+//FEEDBACKS
+
+Route::post('/createfeedback', function (Request $request) {
+    return Feedbacks::create([
+        'rating' => $request->rating,
+    ]);
 });
