@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('sex');
             $table->string('address');
             $table->string('contact');
+            $table->json('feedbacks');
             $table->string('email');
             $table->string('actionprovided');
             $table->timestamps();

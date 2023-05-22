@@ -28,6 +28,7 @@ Route::post('/createclient', function (Request $request) {
         'sex' => $request->sex,
         'address' => $request->address,
         'contact' => $request->contact,
+        'feedbacks' => $request->feedbacks,
         'email' => $request->email,
         'actionprovided' => $request->actionprovided,
     ]);
