@@ -16,6 +16,12 @@ class Clients extends Model
         'address',
         'contact',
         'email',
+        'feedbacks',
         'actionprovided',
+    ];
+
+
+    protected $casts = [
+        'feedbacks' => 'array',
     ];
 }
