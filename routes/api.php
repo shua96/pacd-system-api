@@ -30,13 +30,64 @@ Route::post('/createclient', function (Request $request) {
         'contact' => $request->contact,
         'feedbacks' => $request->feedbacks,
         'email' => $request->email,
+        'reason' => $request->reason,
         'actionprovided' => $request->actionprovided,
     ]);
 });
 
 Route::get('/getclients', function () {
-    return Clients::all();
+    $clients = Clients::all();
+    $maleCount = $clients->where('sex', 'Male')->count();
+    $femaleCount = $clients->where('sex', 'Female')->count();
+    $assessmentCount = Clients::where('reason', 'Assessment & Certification')->count();
+    $registrarCount = Clients::where('reason', 'Registrar')->count();
+    $trainingCount = Clients::where('reason', 'Training')->count();
+    $othersCount = Clients::where('reason', 'Others (Procurement, Finance and Admin, Scholarship)')->count();
+
+    $ageGroups = [
+        '15-25',
+        '26-35',
+        '36-45',
+        '46-55',
+        '56-65',
+        '66 and Above',
+        'Age not indicated'
+    ];
+
+    $ageCounts = array_fill_keys($ageGroups, 0);
+
+    foreach ($clients as $client) {
+        if ($client->age >= 15 && $client->age <= 25) {
+            $ageCounts['15-25']++;
+        } elseif ($client->age >= 26 && $client->age <= 35) {
+            $ageCounts['26-35']++;
+        } elseif ($client->age >= 36 && $client->age <= 45) {
+            $ageCounts['36-45']++;
+        } elseif ($client->age >= 46 && $client->age <= 55) {
+            $ageCounts['46-55']++;
+        } elseif ($client->age >= 56 && $client->age <= 65) {
+            $ageCounts['56-65']++;
+        } elseif ($client->age >= 66) {
+            $ageCounts['66 and Above']++;
+        } else {
+            $ageCounts['Age not indicated']++;
+        }
+    }
+
+    return array_merge($ageCounts, [
+        'maleCount' => $maleCount,
+        'femaleCount' => $femaleCount,
+    ],
+    [
+        'assessmentCount' => $assessmentCount,
+        'registrarCount' => $registrarCount,
+        'trainingCount' => $trainingCount,
+        'othersCount' => $othersCount,
+        
+    ]);
+    
 });
+
 
 Route::post('/updateclient', function (Request $request) {
     $client = Clients::find($request->id);

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('contact');
             $table->json('feedbacks');
             $table->string('email');
+            $table->string('reason');
             $table->string('actionprovided');
             $table->timestamps();
         });
