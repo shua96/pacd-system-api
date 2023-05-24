@@ -17,6 +17,7 @@ class Clients extends Model
         'contact',
         'email',
         'feedbacks',
+        'reason',
         'actionprovided',
     ];
 
