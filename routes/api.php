@@ -35,7 +35,11 @@ Route::post('/createclient', function (Request $request) {
     ]);
 });
 
-Route::get('/getclients', function () {
+Route::get('/getClients', function () {
+    return Clients::all();
+});
+
+Route::get('/getClientData', function () {
     $clients = Clients::all();
     $maleCount = $clients->where('sex', 'Male')->count();
     $femaleCount = $clients->where('sex', 'Female')->count();
@@ -74,18 +78,20 @@ Route::get('/getclients', function () {
         }
     }
 
-    return array_merge($ageCounts, [
-        'maleCount' => $maleCount,
-        'femaleCount' => $femaleCount,
-    ],
-    [
-        'assessmentCount' => $assessmentCount,
-        'registrarCount' => $registrarCount,
-        'trainingCount' => $trainingCount,
-        'othersCount' => $othersCount,
-        
-    ]);
-    
+    return array_merge(
+        $ageCounts,
+        [
+            'maleCount' => $maleCount,
+            'femaleCount' => $femaleCount,
+        ],
+        [
+            'assessmentCount' => $assessmentCount,
+            'registrarCount' => $registrarCount,
+            'trainingCount' => $trainingCount,
+            'othersCount' => $othersCount,
+
+        ]
+    );
 });
 
 
