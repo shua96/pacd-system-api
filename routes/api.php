@@ -32,10 +32,11 @@ Route::post('/createclient', function (Request $request) {
         'email' => $request->email,
         'reason' => $request->reason,
         'actionprovided' => $request->actionprovided,
+        'reco' => $request->reco,
     ]);
 });
 
-Route::get('/getClients', function () {
+Route::get('/getclients', function () {
     return Clients::all();
 });
 
