@@ -19,6 +19,7 @@ class Clients extends Model
         'feedbacks',
         'reason',
         'actionprovided',
+        'reco',
     ];
 
 
