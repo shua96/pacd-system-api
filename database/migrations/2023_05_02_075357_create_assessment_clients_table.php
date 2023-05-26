@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('school');
             $table->string('address');
             $table->string('actionprovided');
+            $table->string('reco');
             $table->timestamps();
         });
     }

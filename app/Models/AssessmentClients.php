@@ -18,5 +18,6 @@ class AssessmentClients extends Model
         'school',
         'address',
         'actionprovided',
+        'reco',
     ];
 }

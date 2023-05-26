@@ -172,6 +172,8 @@ Route::post('/createassessmentclient', function (Request $request) {
         'school' => $request->school,
         'address' => $request->address,
         'actionprovided' => $request->actionprovided,
+        'reco' => $request->reco,
+
     ]);
 });
 
