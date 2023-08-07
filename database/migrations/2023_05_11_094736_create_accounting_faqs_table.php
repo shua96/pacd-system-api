@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('accounting_faqs', function (Blueprint $table) {
             $table->id();
             $table->string('question');
-            $table->string('answer');
+            $table->text('answer');
             $table->timestamps();
         });
     }
