@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->integer('age')->nullable();
             $table->string('sex');
-            $table->string('address');
+            $table->string('region');
+            $table->string('province');
+            $table->string('city');
+            $table->string('barangay');
             $table->string('contact');
             $table->json('feedbacks');
             $table->string('email');
